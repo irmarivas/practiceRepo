@@ -4,14 +4,57 @@ function Smartphone(texts, apps, phoneCalls, photos)
     this.apps = apps;
     this.phoneCalls = phoneCalls;
     this.photos = photos;
-    this.text = function()
+    
+    this.sendTextMessage = function( targetPhone, message )
     {
-        console.log(`hello`);
+        targetPhone.texts.push(message);
+        console.log(`your message has been sent`);
     };
+
+    this.installApps = function( targetPhone, app )
+    {
+        targetPhone.apps.push(app);
+        console.log(`installation complete`);
+    }
 }
 
-const iphone = new Smartphone([`hello`, `what up`, `sup`], [`siri`, `google`,`twitter`], 3, ["pepper.jpg","mom.png","birthday.jpg"]);
-console.log( iphone.text() );
+
+// console.log(iphone.texts);
+// console.log(iphone.apps);
+// console.log(iphone.phoneCalls);
+// console.log(iphone.photos);
+
+
+const iphone = new Smartphone( [], [], 0, [] );
+const samsung = new Smartphone( [], [], 0, [] );
+
+
+iphone.sendTextMessage(samsung, `hello`);
+iphone.installApps(iphone, `instagram`);
+console.log(samsung.texts);
+samsung.sendTextMessage(iphone, `what up sis`);
+samsung.installApps(samsung, `youtube`);
+console.log(iphone.texts);
+console.log(iphone.apps);
+console.log(samsung.apps);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function Plant(color, isNew, age)
 {

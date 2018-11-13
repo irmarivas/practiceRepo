@@ -31,7 +31,7 @@ function makePerson( paramName, paramCountriesVisited, paramIsHappy) //parameter
         // museum is visited = true
         this.attributeMemories.push( paramPlace );
         this.attributeIsHappy = true;
-        return `${this.attributeName} is happy they visited ${paramPlace}!`;
+        return `${this.attributeName} is happy to have visited ${paramPlace}!`;
         
     };
 
@@ -48,29 +48,37 @@ function makePerson( paramName, paramCountriesVisited, paramIsHappy) //parameter
     };
 }
 
+function makePlaces(paramName, paramTimesVisited, paramIsPretty)
+{
+    this.attribName = paramName;
+    this.attribVisited = paramTimesVisited;
+    this.attribIsPretty = paramIsPretty;
+    this.methodGoverns = function (paramNameOfPlace)
+    {
+       return `Democracy governs ${paramNameOfPlace}`;
+    };
+    
+};
+
 const luigi = new makePerson(`Luigi`, 10, false);
+const place = new makePlaces(`France`, 2, true);
+const museum = new makePlaces(`louvre`,1, true);
+const park = new makePlaces(`Yosemite`,2, true);
+const dump = new makePlaces(`South Central`, 0, false);
+
 console.log(luigi.attributeName);
 console.log(luigi.attributeCountriesVisited);
 console.log(luigi.attributeIsHungry);
 console.log(luigi.methodEat(`Indian Food`) );
 console.log(luigi.methodShop(`Hollister`));
-console.log(luigi.methodVisited(`korea`));
+console.log(luigi.methodVisited(place.attribName));
+console.log(luigi.methodVisited(museum.attribName));
+console.log(luigi.methodVisited(park.attribName));
+console.log(luigi.methodVisited(dump.attribName));
+console.log(luigi.attributeMemories);
 
-function makePlaces(paramCountry, paramTimesVisited, paramIsPretty)
-{
-    this.attribCountry = paramCountry;
-    this.attribVisited = paramTimesVisited;
-    this.attribIsPretty = paramIsPretty;
-    this.methodGoverns = function (paramCountry)
-    {
-       return `Democracy governs ${paramCountry}`;
-    };
-    
-};
 
-const place = new makePlaces(`France`, 2, true);
-console.log('placa visited ' + place.attribCountry);
+console.log('placa visited ' + place.attribName);
 console.log(place.attribVisited);
 console.log(place.attribIsPretty);
-console.log(place.methodGoverns(`France`));
-console.log(place.methodGoverns(`Japan`));
+console.log(place.methodGoverns(place.attribName));
